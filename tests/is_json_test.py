@@ -1,6 +1,6 @@
 import unittest
 import json
-from json_datetime_util import is_json
+from date_reclass import is_json
 
 class IsJsonTest(unittest.TestCase):
   def test_is_json(self):

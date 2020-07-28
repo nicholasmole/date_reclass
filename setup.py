@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="nicholasmole", 
+    name="date-reclass", 
     version="0.0.1",
-    author="Nihcolas Mole",
+    author="Nicholas Mole",
     author_email="nmole065@gmail.com",
     description="Convert data from str to datetime or datetime to str.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/nicholasmole/jsondatetime_util",
+    url="https://github.com/nicholasmole/cast_util",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

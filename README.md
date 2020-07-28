@@ -5,7 +5,7 @@ Can also get all dict or list values to convert all to requested type.
 
 ## How to Install
 
-`pip install jsondatetime_util`
+`pip install date-reclass`
 
 ## How to Use
 
@@ -16,10 +16,10 @@ All datetimes inside of the list or dict will be converted from str to datetime 
 When you have a str and need a datetime:
 
 ```
-import jsondatetime
+from date_reclass import cast
 
 date = '17/05/2020'
-result = jsondatetime(date, '%d/%m/%Y').todatetime()
+result = cast(date, '%d/%m/%Y').todatetime()
 >>> '2020-05-17 00:00:00'
 
 ```
@@ -27,17 +27,17 @@ result = jsondatetime(date, '%d/%m/%Y').todatetime()
 If you have a list or dict the same code can be used:
 ```
 # dict example
-import jsondatetime
+from date_reclass import cast
 
 date = {'date1':'17/05/2020','date2':'17/05/2021'}
-result = jsondatetime(date, '%d/%m/%Y').todatetime()
+result = cast(date, '%d/%m/%Y').todatetime()
 >>> {'date1': datetime.datetime(2020, 5, 17, 0, 0), 'date2':{'date2': datetime.datetime(2021, 5, 17, 0, 0)}
 
 # list example
-import jsondatetime
+from date_reclass import cast
 
 date = ['17/05/2020','17/05/2021']
-result = jsondatetime(date, '%d/%m/%Y').todatetime()
+result = cast(date, '%d/%m/%Y').todatetime()
 >>> [datetime.datetime(2020, 5, 17, 0, 0), datetime.datetime(2021, 5, 17, 0, 0)]
 
 ```
@@ -45,11 +45,11 @@ result = jsondatetime(date, '%d/%m/%Y').todatetime()
 When you have a datetime and need a string:
 
 ```
-import jsondatetime
+from date_reclass import cast
 import datetime
 
 date = datetime.datetime(2020, 5, 17)
-result = jsondatetime(date).tostr()
+result = cast(date).tostr()
 >>> '2020-05-17 00:00:00'
 
 ```
@@ -58,19 +58,19 @@ For list or dict:
 
 ```
 # dict
-import jsondatetime
+from date_reclass import cast
 import datetime
 
 date = {'date1':'17/05/2020','date2':'17/05/2021'}
-result = jsondatetime(date, '%d/%m/%Y').todatetime()
+result = cast(date, '%d/%m/%Y').todatetime()
 >>> {'date1': datetime.datetime(2020, 5, 17, 0, 0), 'date2': datetime(2021, 5, 17, 0, 0)}
 
 # list
-import jsondatetime
+from date_reclass import cast
 import datetime
 
 date = ['17/05/2020', '17/05/2021']
-result = jsondatetime(date, '%d/%m/%Y').todatetime()
+result = cast(date, '%d/%m/%Y').todatetime()
 >>> [datetime.datetime(2020, 5, 17, 0, 0), datetime(2021, 5, 17, 0, 0)]
 
 ```

@@ -1,16 +1,16 @@
-from datetime import datetime
+from datetime import datetime, date
 from dateutil.parser import parse
 
-class jsondatetime:
-  """jsondatetime(datetime) -> returns str
+class cast:
+  """cast(datetime) -> returns str
 
-     jsondatetime(datetime, format) -> returns str
+     cast(datetime, format) -> returns str
 
-     jsondatetime(str) -> returns str
+     cast(str) -> returns str
 
-     jsondatetime(List) -> finds datetime in List
+     cast(List) -> finds datetime in List
 
-     jsondatetime(Dict) -> finds datetime in Dict 
+     cast(Dict) -> finds datetime in Dict 
 
   """
   def __new__(cls, data, format = None):
@@ -24,7 +24,7 @@ class jsondatetime:
     if type(self._data) is str:
       return self._data
 
-    elif type(self._data) is datetime:
+    elif type(self._data) is datetime or type(self._data) is date:
       return self.convert_to_str(data=self._data)
 
     elif type(self._data) is list:
@@ -38,7 +38,7 @@ class jsondatetime:
     if type(self._data) is str:
       return self.convert_to_datetime()
 
-    elif type(self._data) is datetime:
+    elif type(self._data) is datetime or type(self._data) is date:
       return self._data
 
     elif type(self._data) is list:
@@ -62,7 +62,7 @@ class jsondatetime:
       try:
         return datetime.strftime(data, format)
       except TypeError as e:
-        print("Datetime was not properly converted in json_datetime_util")
+        print("Datetime was not properly converted in date_reclass")
         print(e)
     return None
 
@@ -84,7 +84,7 @@ class jsondatetime:
       try:
         return datetime.strptime(data, format)
       except TypeError as e:
-        print("Datetime was not properly converted in json_datetime_util")
+        print("Datetime was not properly converted in date_reclass")
         print(e)
     return self._data
 
@@ -137,7 +137,7 @@ class jsondatetime:
         newly_formated_data[index] = self.convert_to_str_from_dict(data=newly_formated_data[index], format=format)
       elif type(newly_formated_data[index]) is list:
         newly_formated_data[index] = self.convert_to_str_from_list(data=newly_formated_data[index], format=format)
-      elif type(newly_formated_data[index]) is datetime:
+      elif type(newly_formated_data[index]) is datetime or type(newly_formated_data[index]) is date:
         newly_formated_data[index] = self.convert_to_str(data=newly_formated_data[index], format=format)
 
     return newly_formated_data
@@ -151,7 +151,7 @@ class jsondatetime:
         newly_formated_data[key] = self.convert_to_str_from_dict(data=value, format=format)
       elif type(value) is list:
         newly_formated_data[key] = self.convert_to_str_from_list(data=value, format=format)
-      elif type(value) is datetime:
+      elif type(value) is datetime or type(value) is date:
         newly_formated_data[key] = self.convert_to_str(data=value, format=format)
 
     return newly_formated_data
