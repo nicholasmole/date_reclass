@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="date-reclass", 
-    version="0.0.1",
+    version="0.0.3",
     author="Nicholas Mole",
     author_email="nmole065@gmail.com",
     description="Convert data from str to datetime or datetime to str.",
