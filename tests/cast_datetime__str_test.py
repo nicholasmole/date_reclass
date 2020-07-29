@@ -1,6 +1,6 @@
 import unittest
 import json
-from datetime import datetime
+from datetime import datetime, date
 from dateutil.parser import parse
 from date_reclass import cast
 
