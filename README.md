@@ -87,5 +87,5 @@ Run tests by running
 You can also check coverage and generate a coverage report
 
 ```
-    coverage run -m unittest app/tests/*/**.py && coverage report 
+    coverage run -m unittest tests/*.py && coverage report 
 ```
