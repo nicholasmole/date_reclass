@@ -56,10 +56,12 @@ class cast:
 
   def convert_to_formatted_str(self, data = None, format = None):
     """ convert a formatted str """
-    data = self.replace_data(data)
+    data = self.replace_data(data=data)
       
     if format is not None:
       try:
+        if type(data) is date:
+          return date.strftime(data, format)
         return datetime.strftime(data, format)
       except TypeError as e:
         print("Datetime was not properly converted in date_reclass")
@@ -75,13 +77,15 @@ class cast:
     if self._format is not None:
       return self.convert_to_formatted_str(data=data, format=self._format)
 
-    return str(self._data)
+    return str(data)
 
   def convert_to_formatted_datetime(self, data = None, format = None):
     """ convert a formatted datetime """
-    data = self.replace_data(data)
+    data = self.replace_data(data=data)
     if format is not None:
       try:
+        if type(data) is date:
+          data = datetime.combine(date.today(), datetime.min.time())
         return datetime.strptime(data, format)
       except TypeError as e:
         print("Datetime was not properly converted in date_reclass")
@@ -90,7 +94,7 @@ class cast:
 
   def convert_to_datetime(self, data = None, format = None):
     """ convert str to datetime """
-    data = self.replace_data(data)
+    data = self.replace_data(data=data)
 
     if format is not None:
       return self.convert_to_formatted_datetime(data=data, format=format)
